@@ -1,0 +1,16 @@
+# Archivos de Sistema Operativo
+.DS_Store
+Thumbs.db
+
+# Directorios de Paquetes/Dependencias (si se usaran en el futuro)
+/node_modules
+
+# Archivos de Editor de Código (VS Code)
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Archivos de caché del navegador
+/cache

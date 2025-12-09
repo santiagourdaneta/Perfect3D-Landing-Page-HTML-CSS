@@ -1,0 +1,326 @@
+/* RESET BÁSICO */
+:root {
+    --color-primary: #007bff; /* Color por defecto (azul) */
+    --color-secondary: #f0f8ff;
+    --color-text: #1a1a1a;
+    --font-stack: 'Arial', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-stack);
+    line-height: 1.6;
+    background-color: #ffffff;
+    color: var(--color-text);
+}
+
+/* RENDIMIENTO Y TIPOGRAFÍA */
+h1, h2, h3 {
+    text-rendering: optimizeLegibility; /* Mejora la calidad del texto */
+}
+
+/* HEADER INTELIGENTE */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: transform 0.3s ease-out; /* Para ocultar/mostrar */
+}
+
+.cta-header {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+/* SECCIÓN HERO */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 150px 5% 80px; /* Espacio para el header fijo */
+    gap: 40px;
+    min-height: 100vh;
+}
+
+.hero-content {
+    max-width: 500px;
+}
+
+.hero-3d-img {
+    max-width: 100%;
+    /* Añadimos un límite en el ancho (por ejemplo, 400px o 50% del contenedor del Hero) */
+    width: 450px; /* Establece un ancho fijo/máximo para controlar su tamaño */
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease-out;
+    border-radius: 8px;
+}
+
+.hero-3d-img:hover {
+    transform: translateY(-5px);
+}
+
+.cta-main, .cta-price {
+    display: inline-block;
+    background-color: var(--color-primary); /* Dependerá de JS */
+    color: white;
+    padding: 15px 30px;
+    margin-top: 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+    border: none;
+}
+
+/* SECCIÓN DE FEATURES (Grid para responsive) */
+.features {
+    padding: 80px 5%;
+    text-align: center;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature-item {
+    padding: 30px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    text-align: left;
+    transition: box-shadow 0.3s;
+}
+
+.feature-item:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Clases que serán controladas por JS para la Personalización */
+.color-blender {
+    --color-primary: #f57900; /* Naranja Blender */
+}
+
+.color-figma {
+    --color-primary: #0d99ff; /* Azul Figma */
+}
+
+/* Estilos para el Footer */
+.footer {
+    background-color: #f7f7f7; 
+    color: var(--color-text);
+    padding: 60px 5%;
+    border-top: 1px solid #eaeaea;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    max-width: 1200px; /* Límite de ancho para un diseño limpio */
+    margin: 0 auto;
+}
+
+.footer-col {
+    flex-basis: 20%; /* Distribuye las columnas equitativamente */
+    min-width: 150px;
+}
+
+.footer h3 {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+.footer ul {
+    list-style: none;
+}
+
+.footer ul li a {
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+}
+
+.copyright {
+    margin-top: 20px;
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+
+.social-icons a {
+    font-size: 1.5em;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+/* ESTILOS PARA EL CONTENIDO DE SOPORTE */
+.seo-support-text {
+    padding: 60px 5%;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.seo-support-text h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.seo-support-text p {
+    margin-bottom: 20px;
+    font-size: 1.05em;
+    color: #444;
+}
+
+/* ================================================= */
+/* ANIMACIÓN DE FADE-IN (Scroll Reveal) */
+/* ================================================= */
+
+/* 1. Estado Inicial (Oculto - "Fade Out") */
+.animate-on-scroll {
+    opacity: 0; /* Totalmente invisible */
+    transform: translateY(20px); /* Ligeramente desplazado hacia abajo */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Transición suave */
+    will-change: opacity, transform; /* Indica al navegador que prepare la animación (Optimización) */
+}
+
+/* 2. Estado Final (Visible - "Fade In") */
+/* Esta clase se añade con JavaScript cuando el elemento entra en pantalla */
+.animate-on-scroll.is-visible {
+    opacity: 1; /* Completamente visible */
+    transform: translateY(0); /* Vuelve a su posición original */
+}
+
+/* ================================================= */
+/* GALERÍA DE GRÁFICOS (CSS Grid) */
+/* ================================================= */
+.gallery {
+    padding: 80px 5%;
+    background-color: var(--color-secondary); /* Fondo ligero para separarla */
+    text-align: center;
+}
+
+.gallery h2 {
+    margin-bottom: 40px;
+    font-size: 2em;
+}
+
+.gallery-grid {
+    display: grid;
+    /* GRID DINÁMICO: 3 columnas en desktop, 2 en tablet, 1 en móvil */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto 50px auto; /* Espacio debajo de la cuadrícula */
+}
+
+.gallery-item {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    /* FORZAMOS LA MISMA DIMENSIÓN RELATIVA (Ejemplo: Cuadrado 1:1) */
+    /* Usaremos un aspect-ratio de 1:1 (cuadrado) para que todas las cajas sean idénticas */
+    aspect-ratio: 1 / 1; 
+    
+    /* Usamos position: relative para que la imagen interna se posicione bien */
+    position: relative; 
+    
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+    opacity: 0; 
+    transform: translateY(20px); 
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+    /* HACEMOS QUE LA IMAGEN INTERNA CUBRA TODA LA CAJA */
+    width: 100%;
+    height: 100%;
+    display: block;
+    /* object-fit: cover garantiza que la imagen llene el espacio sin distorsionarse. */
+    /* Si la imagen es más alta, cortará los bordes, pero el aspecto será uniforme. */
+    object-fit: cover; 
+}
+
+.gallery-cta {
+    margin-top: 40px;
+}
+
+/* Aplicamos las animaciones de Fade-in y Staggering (en cascada) */
+.gallery-item.is-visible {
+    /* Mismo estado final que .animate-on-scroll.is-visible */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hacemos que la animación de Fade-in del CSS sea la misma que la de JS */
+.gallery-item {
+    opacity: 0; 
+    transform: translateY(20px); 
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Responsive para la galería */
+@media (max-width: 650px) {
+    .gallery-grid {
+        grid-template-columns: 1fr; /* Una sola columna en móviles pequeños */
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .footer-col {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column-reverse; 
+        text-align: center;
+        padding-top: 100px;
+    }
+
+    /* Nuevo: Aseguramos que la imagen no sobrepase el ancho de la pantalla móvil */
+    .hero-3d-img {
+        width: 80%; /* Hacemos que ocupe el 80% del espacio para que respire */
+        max-width: 300px; /* Aseguramos que sea más pequeña que en escritorio */
+        margin: 0 auto; /* Centramos la imagen */
+    }
+    
+    .hero-content {
+        max-width: 100%;
+    }
+}
