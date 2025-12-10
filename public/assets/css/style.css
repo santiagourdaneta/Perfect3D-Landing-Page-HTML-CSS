@@ -117,15 +117,6 @@ h1, h2, h3 {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* Clases que serán controladas por JS para la Personalización */
-.color-blender {
-    --color-primary: #f57900; /* Naranja Blender */
-}
-
-.color-figma {
-    --color-primary: #0d99ff; /* Azul Figma */
-}
-
 /* Estilos para el Footer */
 .footer {
     background-color: #f7f7f7; 
@@ -196,25 +187,6 @@ h1, h2, h3 {
 }
 
 /* ================================================= */
-/* ANIMACIÓN DE FADE-IN (Scroll Reveal) */
-/* ================================================= */
-
-/* 1. Estado Inicial (Oculto - "Fade Out") */
-.animate-on-scroll {
-    opacity: 0; /* Totalmente invisible */
-    transform: translateY(20px); /* Ligeramente desplazado hacia abajo */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Transición suave */
-    will-change: opacity, transform; /* Indica al navegador que prepare la animación (Optimización) */
-}
-
-/* 2. Estado Final (Visible - "Fade In") */
-/* Esta clase se añade con JavaScript cuando el elemento entra en pantalla */
-.animate-on-scroll.is-visible {
-    opacity: 1; /* Completamente visible */
-    transform: translateY(0); /* Vuelve a su posición original */
-}
-
-/* ================================================= */
 /* GALERÍA DE GRÁFICOS (CSS Grid) */
 /* ================================================= */
 .gallery {
@@ -241,17 +213,9 @@ h1, h2, h3 {
     background-color: white;
     border-radius: 12px;
     overflow: hidden;
-    /* FORZAMOS LA MISMA DIMENSIÓN RELATIVA (Ejemplo: Cuadrado 1:1) */
-    /* Usaremos un aspect-ratio de 1:1 (cuadrado) para que todas las cajas sean idénticas */
     aspect-ratio: 1 / 1; 
-    
-    /* Usamos position: relative para que la imagen interna se posicione bien */
     position: relative; 
-    
     transition: transform 0.3s ease-in-out, box-shadow 0.3s;
-    opacity: 0; 
-    transform: translateY(20px); 
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .gallery-item:hover {
@@ -271,20 +235,6 @@ h1, h2, h3 {
 
 .gallery-cta {
     margin-top: 40px;
-}
-
-/* Aplicamos las animaciones de Fade-in y Staggering (en cascada) */
-.gallery-item.is-visible {
-    /* Mismo estado final que .animate-on-scroll.is-visible */
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Hacemos que la animación de Fade-in del CSS sea la misma que la de JS */
-.gallery-item {
-    opacity: 0; 
-    transform: translateY(20px); 
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 /* Responsive para la galería */
